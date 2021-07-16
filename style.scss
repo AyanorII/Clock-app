@@ -27,7 +27,7 @@ body {
 }
 
 .main-container {
-    background-image: url('/starter-code/assets/mobile/bg-image-daytime.jpg');
+    background-image: url('assets/mobile/bg-image-daytime.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-color: rgba(0, 0, 0, 0.3);
@@ -46,7 +46,7 @@ body {
     }
 
     &.night {
-        background-image: url('/starter-code/assets/mobile/bg-image-nighttime.jpg');
+        background-image: url('assets/mobile/bg-image-nighttime.jpg');
     }
 }
 
@@ -206,14 +206,14 @@ body {
 @media all and (min-width: 768px) {
     .main-container {
         padding: 5rem 8.1875rem 4rem 4rem;
-        background-image: url(assets/tablet/bg-image-daytime.jpg);
+        background-image: url('assets/tablet/bg-image-daytime.jpg');
 
         &.show {
             transform: translateY(-470px);
         }
 
         &.night {
-            background-image: url(assets/tablet/bg-image-nighttime.jpg);
+            background-image: url('assets/tablet/bg-image-nighttime.jpg');
         }
     }
 
