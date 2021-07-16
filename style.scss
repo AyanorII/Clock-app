@@ -111,7 +111,7 @@ body {
 
 .hour-container {
     display: grid;
-    grid-template-columns: 260px 78px;
+    grid-template-columns: 290px 78px;
     grid-template-rows: auto;
     row-gap: 16px;
     margin-bottom: 3rem;
@@ -240,7 +240,7 @@ body {
     }
 
     .hour-container {
-        grid-template-columns: 450px;
+        grid-template-columns: 460px;
 
         .hour {
             font-size: 10.9375rem;
@@ -354,7 +354,7 @@ body {
     }
 
     .hour-container {
-        grid-template-columns: 500px auto;
+        grid-template-columns: 520px auto;
         width: 50%;
 
         .hour {

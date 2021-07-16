@@ -136,8 +136,8 @@ body {
 .hour-container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 260px 78px;
-      grid-template-columns: 260px 78px;
+  -ms-grid-columns: 290px 78px;
+      grid-template-columns: 290px 78px;
   -ms-grid-rows: auto;
       grid-template-rows: auto;
   row-gap: 16px;
@@ -271,8 +271,8 @@ body {
     display: initial;
   }
   .hour-container {
-    -ms-grid-columns: 450px;
-        grid-template-columns: 450px;
+    -ms-grid-columns: 460px;
+        grid-template-columns: 460px;
   }
   .hour-container .hour {
     font-size: 10.9375rem;
@@ -373,8 +373,8 @@ body {
     letter-spacing: 4px;
   }
   .hour-container {
-    -ms-grid-columns: 500px auto;
-        grid-template-columns: 500px auto;
+    -ms-grid-columns: 520px auto;
+        grid-template-columns: 520px auto;
     width: 50%;
   }
   .hour-container .hour {

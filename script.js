@@ -18,70 +18,77 @@ for (let i = 0; i < btn.length; i++) {
     })
 }
 
-
-$.getJSON('http://ip-api.com/json/', function(ipAPI) {
-    const ipData = ipAPI;
-    const city = ipData.timezone.split('/')[1];
-    const continent = ipData.timezone.split('/')[0];
-    const area = ipData.timezone;
-    console.log(ipData.query)
-
-    const getTimeInfo = () => {
-        $.getJSON(`http://worldtimeapi.org/api/ip`, function(timeAPI) {
-            const timeData = timeAPI;
-            const hour = timeData.datetime.slice(11, 16);
-            const timezone = timeData.abbreviation;
-            const dayOfYear = timeData.day_of_year;
-            const dayOfWeek = timeData.day_of_week;
-            const weekNum = timeData.week_number;
-            let greeting;
-    
-            console.log(timeData);
-            console.log(hour);
-            $('.hour').html(hour);
-            $('.time-zone').html(timezone)
-            $('.location').html(`In ${city}, ${continent}`)
-    
-            $('.timezone').html(area);
-            $('.day-year').html(dayOfYear);
-            $('.day-week').html(dayOfWeek);
-            $('.week-number').html(weekNum);
-    
-            if (parseInt(hour) >= 5 && parseInt(hour) < 12) {
-                greeting = 'Good morning';
-                mainContainer.classList.remove('night');
-                $('.fa-sun').show();
-                $('.fa-moon').hide()
-            } else if (parseInt(hour) >= 12 && parseInt(hour) < 18) {
-                greeting = 'Good afternoon';
-                mainContainer.classList.remove('night');
-            } else if (parseInt(hour) >= 18 && parseInt(hour) <= 23 || parseInt(hour) >= 0 && parseInt(hour) < 5) {
-                greeting = 'Good evening';
-                mainContainer.classList.add('night');
-                $('.fa-sun').hide()
-                $('.fa-moon').show()
-            }
-    
-            $('.morning-night').html(greeting)
-        });
+const settings = {
+    "async": true,
+    "crossDomain": true,
+    "url": "https://world-time2.p.rapidapi.com/ip",
+    "method": "GET",
+    "headers": {
+        "x-rapidapi-key": "f546e2202dmshd82cd4866940de5p11903ajsn95da340ff441",
+        "x-rapidapi-host": "world-time2.p.rapidapi.com"
     }
+};
 
+const getTimeInfo = () => {
+    $.ajax(settings).done(function (response) {
+        const ipData = response;
+        const city = ipData.timezone.split('/')[1];
+        const continent = ipData.timezone.split('/')[0];
+        const area = ipData.timezone;
+    
+        console.log(ipData);
+
+        const hour = ipData.datetime.slice(11, 16);
+        const timezone = ipData.abbreviation;
+        const dayOfYear = ipData.day_of_year;
+        const dayOfWeek = ipData.day_of_week;
+        const weekNum = ipData.week_number;
+        let greeting;
+    
+    
+        $('.hour').html(hour);
+        $('.time-zone').html(timezone)
+        $('.location').html(`In ${city}, ${continent}`)
+    
+        $('.timezone').html(area);
+        $('.day-year').html(dayOfYear);
+        $('.day-week').html(dayOfWeek);
+        $('.week-number').html(weekNum);
+    
+        if (parseInt(hour) >= 5 && parseInt(hour) < 12) {
+            greeting = 'Good morning';
+            mainContainer.classList.remove('night');
+            $('.fa-sun').show();
+            $('.fa-moon').hide()
+        } else if (parseInt(hour) >= 12 && parseInt(hour) < 18) {
+            greeting = 'Good afternoon';
+            mainContainer.classList.remove('night');
+        } else if (parseInt(hour) >= 18 && parseInt(hour) <= 23 || parseInt(hour) >= 0 && parseInt(hour) < 5) {
+            greeting = 'Good evening';
+            mainContainer.classList.add('night');
+            $('.fa-sun').hide()
+            $('.fa-moon').show()
+        }
+    
+        $('.morning-night').html(greeting)
+    });
+}
+
+
+getTimeInfo();
+setInterval(function () {
     getTimeInfo();
-    setInterval(function() {
-        getTimeInfo();
-    }, 60000)
+}, 60000)
 
-});
+
 
 const refreshBtn = document.querySelector('.refresh-btn');
 refreshBtn.addEventListener('click', () => {
-    $.getJSON('https://api.quotable.io/random', function(quoteAPI) {
+    $.getJSON('https://api.quotable.io/random', function (quoteAPI) {
         const quoteData = quoteAPI;
         let randomQuote = quoteData.content;
         let quoteAuthor = quoteData.author;
         $('.random-quote').html(randomQuote);
         $('.person').html(quoteAuthor);
-    }) 
+    })
 })
-
-
