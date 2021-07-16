@@ -45,10 +45,11 @@ const getTimeInfo = () => {
         const weekNum = ipData.week_number;
         let greeting;
     
+        console.log(city.split('_').join(' '))
     
         $('.hour').html(hour);
         $('.time-zone').html(timezone)
-        $('.location').html(`In ${city}, ${continent}`)
+        $('.location').html(`In ${city.split('_').join(' ')}, ${continent}`)
     
         $('.timezone').html(area);
         $('.day-year').html(dayOfYear);
